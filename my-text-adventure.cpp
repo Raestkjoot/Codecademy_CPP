@@ -93,15 +93,15 @@ int main () {
         EnterToContinue();
         cout << "You are at the riverside training handstands.\n";
         
-        int giveUp;
-        do {
+        string giveUp = "";
+        while (giveUp != "2") {
             cout << "You try to stand on your hands, but fail to do so.\n";
-            cout << "   Try again?\n";
-            cout << "   1) Yes, try again.\n";
-            cout << "   2) No, I give up\n";
+            cout << "   Try again?\n" << 
+                    "   1) Yes, try again.\n" <<
+                    "   2) No, I give up\n";
             cout << "  >";
             cin >> giveUp;
-        } while (giveUp != 2);
+        }
         cout << "Gintoki: Us humans aren't meant to walk on our hands anyway.\n";
         cout << "Gintoki: We were given feet so we could use our hands to grab our dreams.\n";
         cout << "Gintoki: Well, if you continue to put in the effort again tomorrow and the day after tomorrow and so on...\n";
@@ -117,12 +117,12 @@ int main () {
 }
 
 void EnterToContinue() {
-    int cont;
+    string cont;
     cout << "   Continue:\n";
     cout << "   1) Continue.\n";
     cout << "  >";
     cin >> cont;
-    if(cont != 1) {
+    if(cont != "1") {
         cout << "Continue is the only option.\n";
     }
 
