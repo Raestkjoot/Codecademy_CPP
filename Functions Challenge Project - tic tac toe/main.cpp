@@ -1,13 +1,15 @@
-//CPP files: main.cpp board.cpp cell.cpp
+//CPP files: main.cpp cell.cpp board.cpp player.cpp
 
 #include <iostream>
-#include <limits>
 #include "cell.hpp"
 #include "board.hpp"
+#include "player.hpp"
 
 using namespace std;
 
 Board board;
+Player player1(board, Cross);
+Player player2(board, Circle);
 void get_input(Cell c);
 
 int main() {
@@ -23,39 +25,15 @@ int main() {
     //Game Loop
     while(board.is_game_running()) {
         cout << "Player 1 (X)\n";
-        get_input(Cross);
+        player1.get_input();
 
         board.print_board();
         if(!board.is_game_running()) {break;}
 
         cout << "Player 2 (O)\n";
-        get_input(Circle);
+        player2.get_input();
 
         board.print_board();
     }
     return 0;
-}
-
-// Get int between 1-9 from player and set corresponding cell to the given cell argument.
-void get_input(Cell c) {
-    int input;
-    cout << "Input: ";
-    cin >> input;
-    while(true) {
-        if(!cin) {
-            cout << "Invalid input. Must be an integer.\n";
-        } else if(input < 1 || input > 9) {
-            cout << "Invalid input. Must be a number between 1-9.\n";
-        } else if(!board.set_cell(input, c)) {
-            cout << "That cell is already occupied.\n";
-        } else { //Break loop if cell is succesfully set to X/O.
-            break;
-        }
-        
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        
-        cout << "Input: ";
-        cin >> input;
-    }
 }
