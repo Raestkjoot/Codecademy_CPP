@@ -10,7 +10,6 @@ using namespace std;
 Board board;
 Player player1(board, Cross);
 Player player2(board, Circle);
-void get_input(Cell c);
 
 int main() {
     cout << "\nWelcome to tic tac to-to-to-to-toe!\n";
